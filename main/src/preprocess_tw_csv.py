@@ -1,7 +1,7 @@
 import csv
 import re
 
-base_dir = "/Users/sujaybhowmick/development/courses/mlnd/MLND-Capstone/twitters-sentiment-analysis"
+base_dir = "/Users/sujaybhowmick/development/courses/mlnd/MLND-Capstone/twitter-sentiment-analysis"
 
 def clean_tweet(row):
     tweet = row[1]
@@ -51,8 +51,8 @@ def preprocess_csv_file(file_in):
         next(reader)
         for row in reader:
             cleaned_tweet = clean_tweet(row)
-            preprocessed_tweet = clean_str(cleaned_tweet)
-            preprocessed_tweet_row = [row[0], preprocessed_tweet, row[2]]
+            # preprocessed_tweet = clean_str(cleaned_tweet)
+            preprocessed_tweet_row = [row[0], cleaned_tweet, row[2]]
             if len(preprocessed_tweets) != 1000:
                 preprocessed_tweets.append(preprocessed_tweet_row)
             else:
@@ -65,5 +65,5 @@ def preprocess_csv_file(file_in):
 
 
 if __name__ == "__main__":
-    twitter_date_file_in = "/Users/sujaybhowmick/development/courses/mlnd/MLND-Capstone/twitters-sentiment-analysis/data_formatted/twitter_tweets.csv"
+    twitter_date_file_in = "/Users/sujaybhowmick/development/courses/mlnd/MLND-Capstone/twitter-sentiment-analysis/data_formatted/twitter_tweets.csv"
     preprocess_csv_file(twitter_date_file_in)

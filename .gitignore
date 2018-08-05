@@ -3,3 +3,4 @@ MLND3_6ENV/
 .idea/
 preprocessed_tweets.csv
 .idea/*
+*-checkpoint.*

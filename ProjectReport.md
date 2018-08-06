@@ -513,23 +513,23 @@ model.summary()
     _________________________________________________________________
     Layer (type)                 Output Shape              Param #   
     =================================================================
-    embedding_41 (Embedding)     (None, 22, 40)            1200000   
+    embedding_44 (Embedding)     (None, 22, 40)            1200000   
     _________________________________________________________________
-    dropout_81 (Dropout)         (None, 22, 40)            0         
+    dropout_87 (Dropout)         (None, 22, 40)            0         
     _________________________________________________________________
-    conv1d_41 (Conv1D)           (None, 20, 250)           30250     
+    conv1d_44 (Conv1D)           (None, 20, 250)           30250     
     _________________________________________________________________
-    global_max_pooling1d_41 (Glo (None, 250)               0         
+    global_max_pooling1d_44 (Glo (None, 250)               0         
     _________________________________________________________________
-    dense_81 (Dense)             (None, 250)               62750     
+    dense_87 (Dense)             (None, 250)               62750     
     _________________________________________________________________
-    dropout_82 (Dropout)         (None, 250)               0         
+    dropout_88 (Dropout)         (None, 250)               0         
     _________________________________________________________________
-    activation_81 (Activation)   (None, 250)               0         
+    activation_87 (Activation)   (None, 250)               0         
     _________________________________________________________________
-    dense_82 (Dense)             (None, 1)                 251       
+    dense_88 (Dense)             (None, 1)                 251       
     _________________________________________________________________
-    activation_82 (Activation)   (None, 1)                 0         
+    activation_88 (Activation)   (None, 1)                 0         
     =================================================================
     Total params: 1,293,251
     Trainable params: 1,293,251
@@ -556,12 +556,12 @@ pred = model.predict_classes(x_test)
 
     Train on 6012 samples, validate on 668 samples
     Epoch 1/2
-    6012/6012 [==============================] - 4s 601us/step - loss: 0.0281 - acc: 0.9935 - val_loss: 0.8001 - val_acc: 0.7665
+    6012/6012 [==============================] - 7s 1ms/step - loss: 0.5976 - acc: 0.6575 - val_loss: 0.4662 - val_acc: 0.7814
     Epoch 2/2
-    6012/6012 [==============================] - 4s 598us/step - loss: 0.0241 - acc: 0.9943 - val_loss: 0.7103 - val_acc: 0.7814
-    1671/1671 [==============================] - 0s 87us/step
+    6012/6012 [==============================] - 4s 592us/step - loss: 0.2762 - acc: 0.8891 - val_loss: 0.5051 - val_acc: 0.7874
+    1671/1671 [==============================] - 0s 91us/step
     
-    Accuracy:  77.91741472885752
+    Accuracy:  79.83243567083211
 
 
 ### Test the Model we just trained
@@ -589,31 +589,31 @@ predict(". Boeing hit hard by tariff and trade war headlines today, down -3.5%. 
 
     Tweet: . RT @SpryGuy: The CEO of Papa John's stiffs and cheats his own employees so he can live in this castle with a moat. NEVER buy Papa John's pi… 
     Prediction: negative 
-    Score:  0.14238462
+    Score:  0.15090017
 
 
 ​    
     Tweet: . GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7 
     Prediction: positive 
-    Score:  0.93925864
+    Score:  0.6433192
 
 
 ​    
     Tweet: . family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ 
     Prediction: negative 
-    Score:  0.00091955106
+    Score:  0.05211673
 
 
 ​    
     Tweet: . #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown 
     Prediction: positive 
-    Score:  0.99858224
+    Score:  0.9745812
 
 
 ​    
     Tweet: . Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ 
     Prediction: negative 
-    Score:  0.012769012
+    Score:  0.23086311
 
 
 ​    

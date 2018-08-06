@@ -591,29 +591,31 @@ predict(". Boeing hit hard by tariff and trade war headlines today, down -3.5%. 
     Prediction: negative 
     Score:  0.15090017
 
-
 ​    
-    Tweet: . GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7 
-    Prediction: positive 
-    Score:  0.6433192
 
+Tweet: . GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7 
 
-​    
-    Tweet: . family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ 
-    Prediction: negative 
-    Score:  0.05211673
+Prediction: positive 
 
+Score:  0.6433192
 
-​    
-    Tweet: . #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown 
-    Prediction: positive 
-    Score:  0.9745812
+Tweet: . family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ 
 
+Prediction: negative 
 
-​    
-    Tweet: . Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ 
-    Prediction: negative 
-    Score:  0.23086311
+Score:  0.05211673
+
+Tweet: . #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown 
+
+Prediction: positive 
+
+Score:  0.9745812
+
+Tweet: . Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ 
+
+Prediction: negative 
+
+Score:  0.23086311
 
 
 ​    

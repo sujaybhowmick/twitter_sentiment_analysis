@@ -12500,7 +12500,7 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[340]:</div>
+<div class="prompt input_prompt">In&nbsp;[373]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># Number of passes through entire dataset</span>
@@ -12532,12 +12532,12 @@ _________________________________________________________________
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 6012 samples, validate on 668 samples
 Epoch 1/2
-6012/6012 [==============================] - 7s 1ms/step - loss: 0.6334 - acc: 0.6246 - val_loss: 0.5071 - val_acc: 0.7455
+6012/6012 [==============================] - 4s 601us/step - loss: 0.0281 - acc: 0.9935 - val_loss: 0.8001 - val_acc: 0.7665
 Epoch 2/2
-6012/6012 [==============================] - 3s 456us/step - loss: 0.3541 - acc: 0.8518 - val_loss: 0.4682 - val_acc: 0.8039
-1671/1671 [==============================] - 0s 69us/step
+6012/6012 [==============================] - 4s 598us/step - loss: 0.0241 - acc: 0.9943 - val_loss: 0.7103 - val_acc: 0.7814
+1671/1671 [==============================] - 0s 87us/step
 
-Accuracy:  80.43087971631387
+Accuracy:  77.91741472885752
 </pre>
 </div>
 </div>
@@ -12556,7 +12556,7 @@ Accuracy:  80.43087971631387
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[360]:</div>
+<div class="prompt input_prompt">In&nbsp;[374]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">SENTIMENT_LABELS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;negative&#39;</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">]</span>
@@ -12568,13 +12568,14 @@ Accuracy:  80.43087971631387
     <span class="c1">#Predict the sentiment label and score</span>
     <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">tweet_words_array</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">prediction</span> <span class="o">=</span> <span class="n">SENTIMENT_LABELS</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">predict_classes</span><span class="p">(</span><span class="n">tweet_words_array</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tweet:&#39;</span><span class="p">,</span> <span class="n">tweet</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">PREDICTION:&#39;</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">SCORE: &#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tweet:&#39;</span><span class="p">,</span> <span class="n">tweet</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Prediction:&#39;</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Score: &#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="n">predict</span><span class="p">(</span><span class="s2">&quot;. RT @SpryGuy: The CEO of Papa John&#39;s stiffs and cheats his own employees so he can live in this castle with a moat. NEVER buy Papa John&#39;s pi…&quot;</span><span class="p">)</span>
 <span class="n">predict</span><span class="p">(</span><span class="s2">&quot;. GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7&quot;</span><span class="p">)</span>
 <span class="n">predict</span><span class="p">(</span><span class="s2">&quot;. family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ&quot;</span><span class="p">)</span>
 <span class="n">predict</span><span class="p">(</span><span class="s2">&quot;. #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown&quot;</span><span class="p">)</span>
+<span class="n">predict</span><span class="p">(</span><span class="s2">&quot;. Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12592,29 +12593,56 @@ Accuracy:  80.43087971631387
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Tweet: . RT @SpryGuy: The CEO of Papa John&#39;s stiffs and cheats his own employees so he can live in this castle with a moat. NEVER buy Papa John&#39;s pi… 
-PREDICTION: negative 
-SCORE:  0.1945395
+Prediction: negative 
+Score:  0.14238462
 
 
 Tweet: . GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7 
-PREDICTION: positive 
-SCORE:  0.61593825
+Prediction: positive 
+Score:  0.93925864
 
 
 Tweet: . family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ 
-PREDICTION: negative 
-SCORE:  0.054240968
+Prediction: negative 
+Score:  0.00091955106
 
 
 Tweet: . #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown 
-PREDICTION: positive 
-SCORE:  0.8766217
+Prediction: positive 
+Score:  0.99858224
+
+
+Tweet: . Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ 
+Prediction: negative 
+Score:  0.012769012
 
 
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Save-Model">Save Model<a class="anchor-link" href="#Save-Model">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[367]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;models/cnn_twitter_sentiment_weights.h5&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 

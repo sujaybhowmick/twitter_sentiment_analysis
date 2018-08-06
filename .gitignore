@@ -3,3 +3,4 @@ MLND3_6ENV/
 .idea/
 .idea/*
 *-checkpoint.*
+*.h5

@@ -4,3 +4,5 @@
 
 ##### Sujay Bhowmick
 8th August 2018
+
+[Project Report](twitter_sentiment_analysis/ProjectReport.md)

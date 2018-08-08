@@ -14,13 +14,29 @@ August 8th 2018
 
 ​	In NLP sentiment analysis is the most common problems through which we try to infer the sentiment of sentence or a paragraph. 
 
-​	My motivation for this project has come from the fact that I have been working in a company which is working on Sentiment Analysis of News, Blogs and Tweets. My doing this project I am looking to work with the data science team to understand and deploy the machine learning models at scale.
+Sentiment Analysis is a process of computationally identifying and categorizing opinions expressed in a piece of text, especially in order to determine whether the writer's attitude towards a particular topic, product, etc. is positive, negative or neutral.
+
+There are three main approaches to Sentiment Analysis 
+
+1. Lexicon based - considers lexicon dictionary for identifying polarity of the text
+2. Machine learning based approach - Needs to develop classification model, which is trained using prelabeled dataset of positive, negative, neutral content
+3. Combined approach - Which uses lexicon dictionary along with pre-labelled data set for developing classification model (Combien approach 1 and approach 2)
+
+My project will be based on approach 2 where I have classification model which is trained using prelabeled dataset of positive and negative tweets.
+
+Sentiment Analysis is useful in many ways. In my use case we are classifying Tweets of some relevance to domain like Finance related to both Micro and Macro events for which various credible financial analyst, activist, famous investors and financial news publishers are talking about in Twitter through their twitter handles (can not provide the Twitter handles of the users here due to privacy concerns). These Tweets are then used to guage the sentiment of the investors on certain topics and can be used to assess the investment decisions on that particular financial asset or stock after sentiments are combined with other analytical data dervided using different methodologies.
+
+​	My motivation for this project has come from the fact that I have been working in a company which is working on Sentiment Analysis of News, Blogs and Tweets. I am doing this project to work with the data science team to understand and deploy the machine learning models at scale.
 
 #### Problem Statement
 
 The goal of this Machine Learning Nanodegree Capstone project is to analyse the sentiment of various twitter tweets which is publicly available.
 
 The tweets are related to financial news which have been labelled by a human for training and testing purpose of the Machine Learning model. There are approximately 8000 tweets which have been labelled with labels **Positive** and **Negative** for tweets indicating a **Positive** sentiment and **Negative** sentiment respectively.
+
+The training and test dataset contains *total* *8351* labelled Tweets, with *3843 positive* and *4508 negative* tweets. The dataset contains Tweet content as feature and sentiment label (label column in the dataset. The target variable that I want to predict is sentiment label 
+
+Link for the dataset can be found here
 
 #### Data Sets and Inputs
 

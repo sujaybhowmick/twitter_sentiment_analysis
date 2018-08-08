@@ -1,0 +1,20 @@
+syntax = "proto3";
+package com.sentifi.sentiments;
+
+message Message {
+	string content = 1;
+}
+
+message MessageRequest {
+	Message message = 1;
+}
+
+message Result {
+	float score = 1;
+	string label = 2;
+}
+
+service Sentiments {
+	rpc get_sentiment_score(sentiments.MessageRequest) returns (sentiments.Result);
+
+}

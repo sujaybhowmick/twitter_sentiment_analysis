@@ -12,9 +12,7 @@ August 8th 2018
 
 #### Domain Background
 
-​	In NLP sentiment analysis is the most common problems through which we try to infer the sentiment of sentence or a paragraph. 
-
-Sentiment Analysis is a process of computationally identifying and categorizing opinions expressed in a piece of text, especially in order to determine whether the writer's attitude towards a particular topic, product, etc. is positive, negative or neutral.
+In NLP Sentiment Analysis is a process of computationally identifying and categorizing opinions expressed in a piece of text, especially in order to determine whether the writer's attitude towards a particular topic, product, etc. is positive, negative or neutral.
 
 There are three main approaches to Sentiment Analysis 
 
@@ -34,13 +32,13 @@ The goal of this Machine Learning Nanodegree Capstone project is to analyse the 
 
 The tweets are related to financial news which have been labelled by a human for training and testing purpose of the Machine Learning model. There are approximately 8000 tweets which have been labelled with labels **Positive** and **Negative** for tweets indicating a **Positive** sentiment and **Negative** sentiment respectively.
 
-The training and test dataset contains *total* *8351* labelled Tweets, with *3843 positive* and *4508 negative* tweets. The dataset contains Tweet content as feature and sentiment label (label column in the dataset. The target variable that I want to predict is sentiment label 
-
-Link for the dataset can be found here
-
 #### Data Sets and Inputs
 
-I have prepared a list of approximately 8000 Twitter tweets and labelled them accordingly with **Positive** and **Negative** labels. The input data feature in this case is the Twitter Tweet content and I will try to predict the Sentiment of the Tweet content.
+I have prepared a list of approximately 8000 Twitter tweets and labelled them accordingly with **Positive** and **Negative** labels. 
+
+The training and test dataset contains *total* *8351* labelled Tweets, with *3843 positive* and *4508 negative* tweets. The input data feature in this case is the Twitter Tweet content and I will try to predict the Sentiment of the Tweet content.
+
+Link for the labelled dataset can be found [here](https://github.com/sujaybhowmick/twitter_sentiment_analysis/blob/master/data/preprocessed_tweets.csv)
 
 *Note: Neutral sentiments are not included in the labelled data.*
 
@@ -52,17 +50,54 @@ I have decided to use Convolutional Neural Network (CNN) classifier to predict t
 
 I am using the [Afinn](https://github.com/fnielsen/afinn) word list based approach of Twitter sentiment analysis which is currently in use in my company as my benchmark to compare my CNN based model.
 
+<u>How Afinn model works</u>
+
+1. Methodology is keyword-matching,
+
+2. Dictionaries of keywords and their Sentiment Value are pre-defined,
+3. Input message is split by all non-alphanumeric characters into individual Tokens,
+4. Each token is matched against the dictionary in the appropriate language,
+5. Afinn's Sentiment Score is the sum of all Sentiment Values of the matched Tokens in the input message.
+
+<u>Afinn's weakness</u>
+
+1. Dictionary is more suited for analyzing product reviews
+2. Methodology cannot reliably deal with even slightly complex language patterns (e.g. "not good")
+
+The original form factor from Afinn model is an integer-value formula as Afinn returns the sum of values of all tokens in a message. Based on a small simulated test, this form factor made it more difficult to translate from Sentiment Score to Sentiment Label as the results may vary infinitely.
+
 #### Evaluation Metrics
 
-I will use the accuracy score and F1-Score of my model for evaluation.
+Once you have built your model, the most important question that arises is how good is your model? So, evaluating your model is the most important task in the data science project which delineates how good your predictions are.
+
+I will use a confusion matrix is a table that is often used to describe the performance of a classification model on a set of test data for which the true values are known. In the confusion matrix there are four parameters which needs to be looked at to determine if the model is good enough. These are
+
+1. **True Positives [TP]** - These are the correctly predicted positive values, which means that the value of actual class and the value of predicted class  is same
+2. **True Negatives [TN]** - These are the correctly predicted negative values which means that the value of actual class and the value of predicted class  is same
+3. **False Positives [FP]** - These values occurs when value of predicted class is positive and actual class is negative
+4. **False Negatives [FN]** - These values occurs when value of predicted class is negative and actual class is positive
+
+Once you understand these four parameters then we can calculate Accuracy, Precision, Recall and F1 score.
+
+**Accuracy** - Accuracy is the most intuitive performance measure and it is simply a ratio of correctly predicted observation to the total observations. One may think that, if we have high accuracy then our model is best. Yes, accuracy is a great measure but only when you have symmetric datasets where values of false positive and false negatives are almost same. Therefore, you have to look at other parameters to evaluate the performance of your model. 
+
+**Precision** - Precision is the ratio of correctly predicted positive observations to the total predicted positive observations. The question that this metric answer is of all Tweets that are labeled as Positive for sentiment, how many actually Positive? High precision relates to the low false positive rate
+
+**Recall** - Recall is the ratio of correctly predicted positive observations to the all observations in actual class - Positive. The question recall answers is: Of all the Tweets that have a Positive sentiment, how many did we label?
+
+F1-Score - F1 Score is the weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. Accuracy works best if false positives and false negatives have similar cost. If the cost of false positives and false negatives are very different, it’s better to look at both Precision and Recall.
 
 #### Project Design
 
-##### Data Preprocessing
+##### Data Collection, Labelling & Preprocessing
 
 First step is to collect the data i.e. Twitter Tweets and label them with positive and negative labels based on the sentiment of the tweet. Once I have the labeled data set, I will encode the labels to 0 for negative and 1 for positive sentiment respectively. Next step is to preprocess the tweet content and remove punctuations, links (with <LINK/> tag), tweet handles(with <NAME/>), hash tag (with <HASHTAG/>) and certain special characters.
 
-##### Splitting data
+**Feature Extraction**
+
+Once we have the labelled data with Content and Label as columns in the data set. I looked at the distribution of the words in the Tweet content. For this I have 	used a custom tokenizer using Keras text preprocessing tokenizer and observe tthe distribution of words. We can then determine the maximum number of token in the training dataset. This is a good input feature which can be used for building the classifier.
+
+**Splitting data**
 
 I will split the tweet dataset into training and test datasets using sklearn's split function. I going to do 80 to 20 split for training and test data set respectively
 

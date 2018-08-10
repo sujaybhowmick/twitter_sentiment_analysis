@@ -42,6 +42,11 @@ Link for the labelled dataset can be found [here](https://github.com/sujaybhowmi
 
 *Note: Neutral sentiments are not included in the labelled data.*
 
+> **References:**
+>
+> https://machinelearningmastery.com/quick-and-dirty-data-analysis-for-your-machine-learning-problem/
+> https://www.r-bloggers.com/how-to-prepare-and-apply-machine-learning-to-your-dataset/
+
 #### Solution Statement
 
 I have decided to use Convolutional Neural Network (CNN) classifier to predict the sentiment (positive or negative) of a tweet
@@ -64,7 +69,12 @@ I am using the [Afinn](https://github.com/fnielsen/afinn) word list based approa
 1. Dictionary is more suited for analyzing product reviews
 2. Methodology cannot reliably deal with even slightly complex language patterns (e.g. "not good")
 
-The original form factor from Afinn model is an integer-value formula as Afinn returns the sum of values of all tokens in a message. Based on a small simulated test, this form factor made it more difficult to translate from Sentiment Score to Sentiment Label as the results may vary infinitely.
+The score from Afinn model is an integer value formula as Afinn returns the sum of values of all tokens in a message. Based on a small some test, this type of score made it more difficult to translate from Sentiment Score to Sentiment Label as the results may vary a lot.
+
+> **References:**
+>
+> http://www.stratio.com/blog/benchmarking-machine-learning-prediction-models/
+> https://blog.dominodatalab.com/benchmarking-predictive-models/
 
 #### Evaluation Metrics
 
@@ -87,6 +97,11 @@ Once you understand these four parameters then we can calculate Accuracy, Precis
 
 F1-Score - F1 Score is the weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. Accuracy works best if false positives and false negatives have similar cost. If the cost of false positives and false negatives are very different, it’s better to look at both Precision and Recall.
 
+> **Pro Tips:**
+>
+> https://towardsdatascience.com/choosing-the-right-metric-for-evaluating-machine-learning-models-part-2-86d5649a5428
+> https://towardsdatascience.com/choosing-the-right-metric-for-machine-learning-models-part-1-a99d7d7414e4
+
 #### Project Design
 
 ##### Data Collection, Labelling & Preprocessing
@@ -95,7 +110,7 @@ First step is to collect the data i.e. Twitter Tweets and label them with positi
 
 **Feature Extraction**
 
-Once we have the labelled data with Content and Label as columns in the data set. I looked at the distribution of the words in the Tweet content. For this I have 	used a custom tokenizer using Keras text preprocessing tokenizer and observe tthe distribution of words. We can then determine the maximum number of token in the training dataset. This is a good input feature which can be used for building the classifier.
+Once we have the labelled data with Content and Label as columns in the data set. I looked at the distribution of the words in the Tweet content. For this I have 	used a custom tokenizer using Keras text preprocessing tokenizer and observe the distribution of words. We can then determine the maximum number of tokens in the training dataset. This is a good input feature which can be used for building the classifier.
 
 **Splitting data**
 
@@ -103,13 +118,14 @@ I will split the tweet dataset into training and test datasets using sklearn's s
 
 ##### Model
 
-I am choosing a 1-D Convolutional Neural Network (CNN) using Keras and Tensorflow to build train the model
+I am choosing a 1-D Convolutional Neural Network (CNN) using Keras and Tensorflow to build and train the model
 
-##### References
-
-Afinn - https://github.com/fnielsen/afinn
-
-Another Twitter sentiment analysis with Python  - https://towardsdatascience.com/another-twitter-sentiment-analysis-with-python-part-11-cnn-word2vec-41f5e28eda74
-
-Sentiment Analysis Using Convolutional Neural Network - https://ieeexplore.ieee.org/document/7363395/
+> **References**:
+>
+> Afinn - https://github.com/fnielsen/afinn
+>
+> Another Twitter sentiment analysis with Python  - https://towardsdatascience.com/another-twitter-sentiment-analysis-with-python-part-11-cnn-word2vec-41f5e28eda74
+>
+> Sentiment Analysis Using Convolutional Neural Network - https://ieeexplore.ieee.org/document/7363395/
+>
 

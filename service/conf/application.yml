@@ -6,4 +6,5 @@ app:
     vocab_size: 30000
     max_len: 22
     batch_size: 32
-  base_dir:
+  data_dir: data
+  models_dir: models

@@ -10,6 +10,8 @@ import os
 import yaml
 import time
 import sys
+from concurrent import futures
+import grpc
 
 import sentiments_pb2 as sentiment_types
 import sentiments_pb2_grpc as sentiments_service_grpc
@@ -22,12 +24,18 @@ class SentimentService(sentiments_service_grpc.SentimentsServicer):
     MAX_LEN = 22
 
     def __init__(self, config):
-        base_path = config['app']['base_dir']
-        df = pd.read_csv(base_path + "data/preprocessed_tweets.csv", encoding='latin-1')
+        self.logger = logging.getLogger(self.__class__.__name__)
+        base_path = config['app']['data_dir']
+        models_path = config['app']['models_dir']
+
+        self.logger.info("base_path: %s", base_path)
+        self.logger.info("models_path: %s", models_path)
+
+        df = pd.read_csv(base_path + "/preprocessed_tweets.csv", encoding='latin-1')
         df = df.drop(columns=['msg_id'])
         train, test = train_test_split(df, test_size=0.2)
 
-        with open(base_path + "/models/tokenizer.pickle", "rb") as pickled_tokenizer:
+        with open(models_path + "/tokenizer.pickle", "rb") as pickled_tokenizer:
             self.tokenizer = pickle.load(pickled_tokenizer)
 
         self.tokenizer.fit_on_texts(train['content'].values)
@@ -39,17 +47,17 @@ class SentimentService(sentiments_service_grpc.SentimentsServicer):
 
         y_train, y_test = train['label'].values, test['label'].values
 
-        with open(base_path + '/models/model.json', 'r') as f:
+        with open(models_path + '/model.json', 'r') as f:
             json = f.read()
         self.model = model_from_json(json)
 
         # load model weights
-        self.model.load_weights(base_path + "/models/cnn_twitter_sentiment_weights.h5")
+        self.model.load_weights(models_path + "/weights-improvement-01-0.79.hdf5")
         self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         self.model.fit(x_train, y_train, batch_size=32, epochs=2, validation_split=0.1, verbose=0)
         # Evaluate the model
         score, acc = self.model.evaluate(x_test, y_test, batch_size=32)
-        print("%s: %.2f%%" % (self.model.metrics_names[1], acc * 100))
+        self.logger.info("%s: %.2f%%" % (self.model.metrics_names[1], acc * 100))
 
     def predict(self, tweet):
         tweet_words_array = self.tokenizer.texts_to_sequences([tweet])
@@ -61,6 +69,24 @@ class SentimentService(sentiments_service_grpc.SentimentsServicer):
 
 
 ONE_DAY_IN_SECONDS = 60 * 60 * 24
+
+
+class SentimentScoreServer(object):
+    def __init__(self, sentiment_service, port, max_workers):
+        self.logger = logging.getLogger(self.__class__.__name__)
+        self.sentiment_score_service = sentiment_service
+        self.port = port
+        self.instance = grpc.server(futures.ThreadPoolExecutor(max_workers=max_workers))
+
+    def start(self):
+        sentiments_service_grpc.add_SentimentsServicer_to_server(self.sentiment_score_service, self.instance)
+        self.instance.add_insecure_port('[::]:%d' % self.port)
+        self.instance.start()
+        self.logger.info('Server is ready at port %d', self.port)
+
+    def stop(self):
+        self.instance.stop(0)
+        self.logger.info('Server was stopped')
 
 
 def keep_server_alive(sentiment_score_server):
@@ -88,6 +114,12 @@ def main(argv):
     logging.config.dictConfig(load_yaml_file(get_config_file_path(LOG_CONFIG_FILE)))
     config = load_yaml_file(get_config_file_path(APP_CONFIG_FILE))
     sentiment_service = SentimentService(config)
+
+    sentiment_score_server = SentimentScoreServer(sentiment_service, port=config['grpc']['port'],
+                                                  max_workers=config['grpc']['max_workers'])
+    sentiment_score_server.start()
+    keep_server_alive(sentiment_score_server)
+
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -52,7 +52,7 @@ class SentimentService(sentiments_service_grpc.SentimentsServicer):
         self.model = model_from_json(json)
 
         # load model weights
-        self.model.load_weights(models_path + "/weights-improvement-01-0.79.hdf5")
+        self.model.load_weights(models_path + "/weights-improvement-02-0.80.hdf5")
         self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         self.model.fit(x_train, y_train, batch_size=32, epochs=2, validation_split=0.1, verbose=0)
         # Evaluate the model

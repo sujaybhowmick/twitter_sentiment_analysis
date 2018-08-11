@@ -9,3 +9,8 @@ preprocessed_tweets2.csv
 convert_to_labelled_tweets.py
 *.log
 .floyddata
+*.hdf5
+*.pickle
+build/*/**
+sentiment_service.egg-info/
+*_pb2*.py

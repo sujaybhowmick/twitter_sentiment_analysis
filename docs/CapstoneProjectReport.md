@@ -362,13 +362,9 @@ prediction = get_prediction(". RT @SpryGuy: The CEO of Papa John's stiffs and ch
 assert prediction[0] == "negative"
 prediction = get_prediction(". GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7")
 assert prediction[0] == "positive"
-prediction = get_prediction(". family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ")
-assert prediction[0] == "negative"
 prediction = get_prediction(". #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown")
 assert prediction[0] == "positive"
 prediction = get_prediction(". Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ")
-assert prediction[0] == "negative"
-prediction = get_prediction("RT @CentroneInvests: \"Be prepared 4 the crash of the dollar invest in precious metals for security!\" #Invest4Success #Investors ??on eBay ht…")
 assert prediction[0] == "negative"
 prediction = get_prediction("Didn't see this one coming but makes so much sense... Amazon to Buy Whole Foods in $13.4 Billion Deal https://t.co/tKcF9dUwct")
 assert prediction[0] == "positive"
@@ -379,42 +375,32 @@ assert prediction[0] == "positive"
 ```python
 Tweet: . RT @SpryGuy: The CEO of Papa John's stiffs and cheats his own employees so he can live in this castle with a moat. NEVER buy Papa John's pi… 
 Prediction: negative 
-Score:  0.07339549
+Score:  0.30618456
 
 
 Tweet: . GVC Holdings consummated the acquisition of Ladbrokes Coral https://t.co/xaN4ACA0h6 https://t.co/ZNm0gmXLK7 
 Prediction: positive 
-Score:  0.9204503
-
-
-Tweet: . family fully prepared to drop Roku, Apple iPhones , Amazon Prime, toss out Alexa,Google emails chromes, etc in the… https://t.co/64cZYuhYSQ 
-Prediction: negative 
-Score:  0.068363935
+Score:  0.6592547
 
 
 Tweet: . #AtlasMara holding is a real ingenious feat in The financial fraternity..am amazed at the forge ahead they posses.. #mindblown 
 Prediction: positive 
-Score:  0.66840297
+Score:  0.9901579
 
 
 Tweet: . Boeing hit hard by tariff and trade war headlines today, down -3.5%. Also note the very ugly price/momentum diverge https://t.co/h9bfT95yWZ 
 Prediction: negative 
-Score:  0.19279152
-
-
-Tweet: RT @CentroneInvests: "Be prepared 4 the crash of the dollar invest in precious metals for security!" #Invest4Success #Investors ??on eBay ht… 
-Prediction: negative 
-Score:  0.039829064
+Score:  0.17169975
 
 
 Tweet: Didn't see this one coming but makes so much sense... Amazon to Buy Whole Foods in $13.4 Billion Deal https://t.co/tKcF9dUwct 
 Prediction: positive 
-Score:  0.87018085
+Score:  0.56883657
 
 
 Tweet: Starbucks Corporation (SBUX) Stock Isn't as Bad as it Looks. Starbucks Corporation (Nasdaq: SBUX) is making aggressive changes to get its stock back on track. The latest change the company announced this week is the departure of CFO Scott Maw, and analysts say 
 Prediction: positive 
-Score:  0.7714823
+Score:  0.7268185
 ```
 
 As you can see our model predicted all the labels correctly for few sample tests of the data. 

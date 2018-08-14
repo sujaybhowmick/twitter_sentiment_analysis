@@ -31,85 +31,75 @@ I have collected financially relevant messages from Twitter (had to do parallel 
 
 Most of the tweets contains twitter handles (e.g. @sujay), hash tags, hyperlinks. Hence I need to preprocess the data  and and replace each of them with normalized tags suchs as <LINK/> for hyperlinks, <HASHTAG/> for hash tags, twitter handle with <NAME/>, special entities like quotes, ampersand and other various special characters which is outside the characted set of English
 
-After preprocessing following are the dataset break of messages after labelling them with sentiment label
-
-```html
-Total Labelled Messages: 8351
-Positive Labels: 3843
-Negative Labels: 4508
-```
-
-Link for the labelled dataset can be found [here](https://github.com/sujaybhowmick/twitter_sentiment_analysis/blob/master/data/preprocessed_tweets.csv)
-
 ### Exploratory Visualization
 
 Following data is loaded using Pandas and explored. Below is Pandas Dataframe of the dataset
 
-|      | content                                          | label |
-| ---- | ------------------------------------------------ | ----- |
-| 0    | boeing hit hard by tariff and trade war headl... | 0     |
-| 1    | <NAME/> <HASHTAG/> microsoft is a proud spons... | 1     |
-| 2    | <NAME/> <NAME/> it 's not fake news , i own b... | 1     |
-| 3    | <NAME/> canada should consider slapping 300% ... | 0     |
-| 4    | 'upwards of 20 , 00 workers' could lose jobs ... | 0     |
-| 5    | $tsla short interest: 28 , 382 , 800 vs prev ... | 1     |
-| 6    | the most logical way-forward for <HASHTAG/> s... | 0     |
-| 7    | <NAME/> <NAME/> or could lead to a monopoly w... | 1     |
-| 8    | we need to break up google , disney , and eve... | 0     |
-| 9    | venkatesh potluri , a research fellow at micr... | 1     |
-| 10   | venkatesh potluri , a research fellow at micr... | 1     |
-| 11   | veolia teams mobilized to restore <HASHTAG/> ... | 1     |
-| 12   | favoring insider deal , beach leaders \( town... | 0     |
-| 13   | insider trade update: jarl berntzen increases... | 1     |
-| 14   | investigate salesforce insider trading crime ... | 0     |
-| 15   | <NAME/> <NAME/> <HASHTAG/> podcast: avaya to ... | 1     |
-| 16   | <HASHTAG/> breakingnews <HASHTAG/> tech magic... | 1     |
-| 17   | rt <NAME/> ironic that freeport mcmoran is th... | 1     |
-| 18   | rt <NAME/> exciting to hear that my companyêl... | 1     |
-| 19   | not great reading for waitrose , heading in t... | 0     |
-| 20   | fitbit 's looking for a sweet turnaround - th... | 1     |
-| 21   | kimberly-clark wins 2018 climate leadership a... | 1     |
-| 22   | per wsj , unilever threatens removing adverti... | 0     |
-| 23   | unilever calls out facebook/google sexism , r... | 0     |
-| 24   | coffee 's on: 41st street starbucks reopens a... | 1     |
-| 25   | experts: "starbucks ceo schultz 's hiring of ... | 0     |
-| 26   | datacentrix takes top honours at 2017 hpe par... | 1     |
-| 27   | mcdonald 's , hedging their bets , under-orde... | 0     |
-| 28   | rt <NAME/> arby 's buys buffalo wild wings , ... | 0     |
-| 29   | rt <NAME/> due to the forecasted heavy snow ,... | 0     |
-| ...  | ...                                              | ...   |
-| 8321 | abbvie 's hepatitis c drug , novartis' lung c... | 1     |
-| 8322 | abbvie 's hepatitis c drug , novartis' lung c... | 1     |
-| 8323 | vw must recall around 57 , 600 of its diesel ... | 0     |
-| 8324 | multiple <HASHTAG/> myeloma study results enc... | 1     |
-| 8325 | "wpp teamed up with cambridge analytica to wo... | 1     |
-| 8326 | ingram micro expands cybersecurity capabiliti... | 1     |
-| 8327 | branded a liar \?  the <HASHTAG/> volkswagen...  | 0     |
-| 8328 | our collaboration with the johnson & johnson ... | 1     |
-| 8329 | looking to become a <HASHTAG/> pinterest rock... | 1     |
-| 8330 | the immoral minority: pepsico reserves one hu... | 1     |
-| 8331 | <NAME/> source says the layoff wo n't include... | 0     |
-| 8332 | rt <NAME/> breaking: british members of parli... | 0     |
-| 8333 | carb:carbonitepaying145m to buy dell sub...      | 1     |
-| 8334 | rt <NAME/> netflix acquires sundance award-wi... | 1     |
-| 8335 | <NAME/> <HASHTAG/> trump gave special permits... | 0     |
-| 8336 | rt <NAME/> <HASHTAG/> aadhaar identity fraud ... | 0     |
-| 8337 | amznpartneringwjpm , berkshire hathaway ...      | 1     |
-| 8338 | amznpartneringwjpm , berkshire hathaway ...      | 1     |
-| 8339 | now this is truly disruptive. the spinoffs of... | 0     |
-| 8340 | now this is truly disruptive. the spinoffs of... | 0     |
-| 8341 | <NAME/> has warned customers to be cautious o... | 0     |
-| 8342 | stop illegal mass layoff in verizon: <HASHTAG... | 0     |
-| 8343 | i will keep everyone posted as i find out mor... | 0     |
-| 8344 | rt <NAME/> we are excited <NAME/> to <HASHTAG... | 1     |
-| 8345 | <HASHTAG/> rnaseq veracyte plans two new test... | 1     |
-| 8346 | rt <NAME/> how apple pay can make credit card... | 0     |
-| 8347 | globe , disney partner to support hero founda... | 1     |
-| 8348 | rt <NAME/> fantastic story of partnership wit... | 1     |
-| 8349 | messaging on net neutrality is all messed up.... | 0     |
-| 8350 | messaging on net neutrality is all messed up.... | 0     |
+| content | label                                             |      |
+| ------- | ------------------------------------------------- | ---- |
+| 0       | omg its already 7:30 :O                           | 1    |
+| 1       | Juuuuuuuuuuuuuuuuussssst Chillin!!                | 1    |
+| 2       | handed in my uniform today . i miss you already   | 1    |
+| 3       | hmmmm.... i wonder how she my number <NAME/>      | 1    |
+| 4       | thanks to all the haters up in my face all day... | 1    |
+| 5       | Feeling strangely fine. Now I'm gonna go liste... | 1    |
+| 6       | You're the only one who can see this cause no ... | 1    |
+| 7       | goodbye exams, HELLO ALCOHOL TONIGHT              | 1    |
+| 8       | uploading pictures on friendster                  | 1    |
+| 9       | (: !!!!!! - so i wrote something last week. an... | 1    |
+| 10      | ... Do I need to even say it? Do I? Well, her...  | 1    |
+| 11      | ... health class (what a joke!)                   | 1    |
+| 12      | <NAME/> < 3 GO TO THE SHOW TONIGHT                | 1    |
+| 13      | bathroom is clean..... now on to more enjoyabl... | 1    |
+| 14      | boom boom pow                                     | 1    |
+| 15      | go give ur mom a hug right now. <LINK/>           | 1    |
+| 16      | Going To See Harry Sunday Happiness               | 1    |
+| 17      | - I always get what I want                        | 1    |
+| 18      | I bend backwards                                  | 1    |
+| 19      | i get off work sooooon! i miss cody booo. have... | 1    |
+| 20      | I hate allergies. Should I get my hair cut tom... | 1    |
+| 21      | I'm really going to bed now...                    | 1    |
+| 22      | Jin has a twitter.                                | 1    |
+| 23      | just gonna smile...cuz it is what it is..and i... | 1    |
+| 24      | Just got home, and I got to see my friend Zah...  | 1    |
+| 25      | oh thank you!                                     | 1    |
+| 26      | pleased                                           | 1    |
+| 27      | Rose and ood will be back in the Xmas Who spec... | 1    |
+| 28      | Thanks, I need all the help i can get.            | 1    |
+| 29      | - that explains alot.                             | 1    |
+| ...     | ...                                               | ...  |
+| 1552970 | Yummy! Bummer...on my way to mom's for a famil... | 0    |
+| 1552971 | Yummy, jess, your doingg everythingg I wanna b... | 0    |
+| 1552972 | Yup - late for work! But not nearly as late as... | 0    |
+| 1552973 | yup all alone on my bday happy bday every1 bor... | 0    |
+| 1552974 | yup four more days to they get back and six mo... | 0    |
+| 1552975 | yup gots a headache                               | 0    |
+| 1552976 | yup the crying has started. Finished part I an... | 0    |
+| 1552977 | Yup! So, they did take my phone. But, it will ... | 0    |
+| 1552978 | Yup, I was right. I'm a sick girl, damn           | 0    |
+| 1552979 | Yup, Jr's collarbone is broken I can tell he i... | 0    |
+| 1552980 | yup, my cat is still stranded she's just sitti... | 0    |
+| 1552981 | Yup, needed the tissues for BSG but not quite ... | 0    |
+| 1552982 | Yup, SPORE is updating now                        | 0    |
+| 1552983 | Yup, that is all                                  | 0    |
+| 1552984 | Yup, the hints yesterday were correct. I'm now... | 0    |
+| 1552985 | Yup. Bawling like a baby. So sad                  | 0    |
+| 1552986 | Yup. Total sausage fest at the bar tonight. Ol... | 0    |
+| 1552987 | Yupp. I'm going to miss have to frees a day       | 0    |
+| 1552988 | yuppies are real weird when you say " excuse ...  | 0    |
+| 1552989 | Yvonne left House is going to be in shambles n... | 0    |
+| 1552990 | yzabellopez: ÃÂ yayayay cant wait, i just wis...  | 0    |
+| 1552991 | ze mother has spoken.. no playoffs fo' kathy t... | 0    |
+| 1552992 | Zefron and BBV, please dont break-up.             | 0    |
+| 1552993 | Zese v posteli. Posloucham System of a down a ... | 0    |
+| 1552994 | Zeta is getting old and I dont want her to go ... | 0    |
+| 1552995 | Zicam Cold Remedy made my nose bleed i don't r... | 0    |
+| 1552996 | zicam is being pulled from market!!! oh, the m... | 0    |
+| 1552997 | Zigs the cat <NAME/> drat! you didn't win         | 0    |
+| 1552998 | Zip Lining today in Monteverde. Only 4 days left  | 0    |
+| 1552999 | Zipper flower fail Moving on to next project. ... | 0    |
 
-8351 rows × 2 columns
+1553000 rows × 2 columns
 
 **Feature extraction**
 

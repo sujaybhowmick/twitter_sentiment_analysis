@@ -5,4 +5,4 @@
 ##### Sujay Bhowmick
 8th August 2018
 
-[Project Report](https://github.com/sujaybhowmick/twitter_sentiment_analysis/blob/master/docs/CapstoneProjectReport.md)
+[Project Report](https://github.com/sujaybhowmick/twitter_sentiment_analysis/blob/master/docs/CapstoneProjectReport.pdf)
